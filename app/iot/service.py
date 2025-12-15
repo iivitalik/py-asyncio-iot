@@ -33,7 +33,7 @@ class IOTService:
         self.devices[device_id] = device
         return device_id
 
-    async def register_devices(self, *devices: Device) -> None:
+    async def register_devices(self, *devices: Device) -> list[str]:
         connect_tasks = [device.connect() for device in devices]
         await asyncio.gather(*connect_tasks)
 
